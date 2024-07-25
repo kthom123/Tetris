@@ -62,6 +62,13 @@
             }
         }
 
-        private void MoveRowDown
+        private void MoveRowDown(int r, int numRows)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                grid[r + numRows, c] = grid[r, c];
+                grid[r, c] = 0;
+            }
+        }
     }
 }
