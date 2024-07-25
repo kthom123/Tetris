@@ -7,7 +7,7 @@
         public int Columns { get; }
 
         public int this[int r, int c]
-        { 
+        {
             get => grid[r, c];
             set => grid[r, c] = value;
         }
@@ -46,7 +46,7 @@
         {
             for (int c = 0; c < Columns; c++)
             {
-                if (grid[r,c] != 0)
+                if (grid[r, c] != 0)
                 {
                     return false;
                 }
@@ -69,6 +69,26 @@
                 grid[r + numRows, c] = grid[r, c];
                 grid[r, c] = 0;
             }
+        }
+
+        public int ClearFullRows()
+        {
+            int cleared = 0;
+
+            for (int r = Rows-1; r >= 0; r--)
+            {
+                if (IsRowFull(r))
+                {
+                    ClearRow(r);
+                    cleared++;
+                }
+                else if (cleared > 0)
+                {
+                    MoveRowDown(r, cleared);
+                }
+            }
+
+            return cleared;
         }
     }
 }
