@@ -53,5 +53,15 @@
             }
             return true;
         }
+
+        private void ClearRow(int r)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                grid[r, c] = 0;
+            }
+        }
+
+        private void MoveRowDown
     }
 }
